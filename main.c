@@ -1,1 +1,1 @@
-//ini main ya.
+//ini main.c
