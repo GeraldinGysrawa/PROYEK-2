@@ -1,18 +1,8 @@
+#include "body.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-
-#define MAX_CATATAN 1000 // Jumlah maksimum catatan yang dapat disimpan
-#define MAX_KEY 100 // Panjang maksimum kunci enkripsi
-
-// Struktur untuk menyimpan catatan
-struct Catatan {
-    int no;
-    char judul[100];
-    char tanggal[20];
-    char isi[1000];
-};
 
 // Fungsi untuk mengenkripsi teks menggunakan algoritma Vigenere
 void enkripsiVigenere(char teks[], char kunci[]) {
@@ -35,10 +25,10 @@ void tambahCatatan() {
     struct Catatan catatan;
 
     printf("Masukkan judul catatan: ");
-    scanf(" %[^\n]s", catatan.judul);
+    scanf(" %s", catatan.judul);
 
     printf("Masukkan tanggal catatan (DD/MM/YYYY): ");
-    scanf(" %[^\n]s", catatan.tanggal);
+    scanf(" %s", catatan.tanggal);
 
     printf("Masukkan isi catatan:\n");
     scanf(" %[^\n]s", catatan.isi);
@@ -46,7 +36,7 @@ void tambahCatatan() {
     // Enkripsi isi catatan sebelum disimpan
     char kunci[MAX_KEY];
     printf("Masukkan kunci enkripsi: ");
-    scanf(" %[^\n]s", kunci);
+    scanf(" %s", kunci);
 
     enkripsiVigenere(catatan.isi, kunci);
     enkripsiVigenere(catatan.judul, kunci);
@@ -63,9 +53,4 @@ void tambahCatatan() {
     fclose(file);
 
     printf("Catatan berhasil ditambahkan.\n");
-}
-
-int main() {
-    tambahCatatan();
-    return 0;
 }
